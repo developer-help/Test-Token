@@ -1,12 +1,8 @@
 {
 "pipelines":[
-  {"name":"clean up", "environment":"dev"}
-,
-
+  {"name":"clean up", "environment":"dev"},
   {"name":"create", "environment":"qa"},
-  
   {"name":"update", "environment":"prod"}
-
-
+]
 
 }
