@@ -1,5 +1,6 @@
 node {
     // This displays colors using the 'xterm' ansi color map.
+    def pipeline = "p1"
     stage("Hello") {
         def green = "green"
         echo "Hello" + " ${getGreen()} World"
