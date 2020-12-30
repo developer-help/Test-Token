@@ -32,7 +32,13 @@ connection.setDoOutput(true)
 def json = new JsonSlurper().parseText(text);
 def fileDetails = json.content;
 def map = new JsonSlurper().parseText(new String(fileDetails.decodeBase64()))
-def names = map.pipelines.collect{ele -> ele.name}
+def names;
+if(environment == \'prod\') {
+  names = map.pipelines.collect{ele -> if(ele.name == \'create\') return ele.name}
+}
+else {
+  names = map.pipelines.collect{ele -> ele.name}
+}
 return names
     } 
 catch(Exception e) {
