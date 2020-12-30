@@ -1,5 +1,5 @@
 
-properties([parameters([[$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT', description: '', filterLength: 1, filterable: false, name: 'environment', randomName: 'choice-parameter-1033414415022900', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: 'return [\'dev\', \'qa\',\'prod\']']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', description: '', filterLength: 1, filterable: false, name: 'pipeline', randomName: 'choice-parameter-1033414418977500', referencedParameters: 'environment', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: '''import jenkins.*
+properties([parameters([[$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT', description: '', filterLength: 1, filterable: false, name: 'environment', randomName: 'choice-parameter-1034557537179900', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: 'return [\'dev\', \'qa\',\'prod\']']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', description: '', filterLength: 1, filterable: false, name: 'pipeline', randomName: 'choice-parameter-1034557548054800', referencedParameters: 'environment', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: '''import jenkins.*
 import jenkins.model.* 
 import hudson.*
 import hudson.model.*
@@ -32,12 +32,9 @@ connection.setDoOutput(true)
 def json = new JsonSlurper().parseText(text);
 def fileDetails = json.content;
 def map = new JsonSlurper().parseText(new String(fileDetails.decodeBase64()))
-def names;
-if("${environment}" == "prod") {
-  names = ["create"]
-}
-else {
-  names = map.pipelines.collect{ele -> ele.name}
+def names = map.pipelines.collect{ele -> ele.name}
+if("${environment}" == \'prod\') {
+ return [\'create\']
 }
 return names
     } 
@@ -48,7 +45,6 @@ finally {
         connection.disconnect()
     }
     return [text]''']]]])])
-
 node {
     // This displays colors using the 'xterm' ansi color map.
     def pipeline = "p1"
