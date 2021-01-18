@@ -29,7 +29,7 @@ connection.setRequestProperty("Authorization", "Bearer ${creds.password}");
 connection.setRequestProperty("Accept", "application/vnd.github.v3+json");
 connection.setDoOutput(true)
      text = connection.inputStream.text
-def json = new JsonSlurper().parseText(text+'}');
+def json = new JsonSlurper().parseText(text);
 def fileDetails = json.content;
 def map = new JsonSlurper().parseText(new String(fileDetails.decodeBase64()))
 def names = map.pipelines.collect{ele -> ele.name}
