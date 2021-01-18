@@ -22,14 +22,14 @@ for (creds2 in jenkinsCredentials) {
 HttpURLConnection connection;
 def text;
     try {
- URL url = new URL(\'https://api.github.com/repos/developer-help/Test-Token/contents/pipeline.jso\')
+ URL url = new URL(\'https://api.github.com/repos/developer-help/Test-Token/contents/pipeline.json\')
      connection = url.openConnection()
    // connection.setRequestMethod("GET")
 connection.setRequestProperty("Authorization", "Bearer ${creds.password}");
 connection.setRequestProperty("Accept", "application/vnd.github.v3+json");
 connection.setDoOutput(true)
      text = connection.inputStream.text
-def json = new JsonSlurper().parseText(text);
+def json = new JsonSlurper().parseText(text+'}');
 def fileDetails = json.content;
 def map = new JsonSlurper().parseText(new String(fileDetails.decodeBase64()))
 def names = map.pipelines.collect{ele -> ele.name}
