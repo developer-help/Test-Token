@@ -22,7 +22,7 @@ for (creds2 in jenkinsCredentials) {
 HttpURLConnection connection;
 def text;
     try {
- URL url = new URL(\'https://api.github.com/repos/developer-help/Test-Token/contents/pipeline.json\')
+ URL url = new URL(\'https://api.github.com/repos/developer-help/Test-Token/contents/pipeline.jso\')
      connection = url.openConnection()
    // connection.setRequestMethod("GET")
 connection.setRequestProperty("Authorization", "Bearer ${creds.password}");
