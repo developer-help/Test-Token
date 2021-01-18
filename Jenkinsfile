@@ -21,7 +21,7 @@ for (creds2 in jenkinsCredentials) {
 
 HttpURLConnection connection;
 def text;
-//    try {
+   try {
  URL url = new URL(\'https://api.github.com/repos/developer-help/Test-Token/contents/pipeline.json\')
      connection = url.openConnection()
    // connection.setRequestMethod("GET")
@@ -38,12 +38,12 @@ if("${environment}" == \'prod\') {
 }
 return names
     } 
-/*catch(Exception e) {
+catch(Exception e) {
  return [e.dump()]
 }
 finally {
         connection.disconnect()
-    }*/
+    }
     return [text]''']]]])])
 node {
     // This displays colors using the 'xterm' ansi color map.
