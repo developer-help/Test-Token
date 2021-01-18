@@ -1,5 +1,4 @@
-
-properties([parameters([[$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT', description: '', filterLength: 1, filterable: false, name: 'environment', randomName: 'choice-parameter-1034557537179701', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: 'return [\'dev\', \'qa\',\'prod\']']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', description: '', filterLength: 1, filterable: false, name: 'pipeline', randomName: 'choice-parameter-1034557548054800', referencedParameters: 'environment', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: '''import jenkins.*
+properties([parameters([[$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT', description: '', filterLength: 1, filterable: false, name: 'environment', randomName: 'choice-parameter-1034557537179900', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: 'return [\'dev\', \'qa\',\'prod\']']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', description: '', filterLength: 1, filterable: false, name: 'pipeline', randomName: 'choice-parameter-1034557548054800', referencedParameters: 'environment', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: '''import jenkins.*
 import jenkins.model.* 
 import hudson.*
 import hudson.model.*
@@ -21,7 +20,7 @@ for (creds2 in jenkinsCredentials) {
 
 HttpURLConnection connection;
 def text;
-   try {
+    try {
  URL url = new URL(\'https://api.github.com/repos/developer-help/Test-Token/contents/pipeline.json\')
      connection = url.openConnection()
    // connection.setRequestMethod("GET")
